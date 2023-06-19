@@ -1,0 +1,1 @@
+- Create better Readme, with info about using the script in code

@@ -68,7 +68,7 @@ class SnapchatDL:
                     field_id = user_profile["$case"]
                     return user_profile[field_id]
                 else:
-                    raise UserNotFoundError
+                    raise UserNotFoundError(f"Could not find Snapchat user {username}")
 
             def util_web_story(content: dict):
                 if "story" in content["props"]["pageProps"]:
