@@ -12,9 +12,9 @@ exclude_lines =
 
 [run]
 omit =
-    snapchat_dl/app.py
-    snapchat_dl/cli.py
-    snapchat_dl/version.py
+    snapchat_dlp/app.py
+    snapchat_dlp/cli.py
+    snapchat_dlp/version.py
     setup.py
     .eggs/*
     venv/*

@@ -1,17 +1,17 @@
 #!/usr/bin/env python
-"""Tests for `snapchat_dl` package."""
+"""Tests for `snapchat_dlp` package."""
 import unittest
 from argparse import Namespace
 
-from snapchat_dl.utils import search_usernames
-from snapchat_dl.utils import strf_time
-from snapchat_dl.utils import use_batch_file
-from snapchat_dl.utils import use_prefix_dir
-from snapchat_dl.utils import valid_username
+from snapchat_dlp.utils import search_usernames
+from snapchat_dlp.utils import strf_time
+from snapchat_dlp.utils import use_batch_file
+from snapchat_dlp.utils import use_prefix_dir
+from snapchat_dlp.utils import valid_username
 
 
 class Test_utils(unittest.TestCase):
-    """Tests for `snapchat_dl` package."""
+    """Tests for `snapchat_dlp` package."""
 
     def test_valid_username(self):
         """Test for invalid username."""

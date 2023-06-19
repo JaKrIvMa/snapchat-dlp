@@ -2,33 +2,33 @@
   <div align="center">
   <h1>
     Snapchat Public Stories Downloader<br /> <br />
-    <!-- <a href="https://pypi.python.org/pypi/snapchat-dl">
+    <!-- <a href="https://pypi.python.org/pypi/snapchat-dlp">
       <img
-        src="https://img.shields.io/pypi/v/snapchat-dl.svg?cacheSeconds=360"
+        src="https://img.shields.io/pypi/v/snapchat-dlp.svg?cacheSeconds=360"
         alt="Python Package"
       />
     </a>
-    <a href="https://pypi.python.org/pypi/snapchat-dl">
+    <a href="https://pypi.python.org/pypi/snapchat-dlp">
       <img
-        src="https://img.shields.io/pypi/wheel/snapchat-dl"
+        src="https://img.shields.io/pypi/wheel/snapchat-dlp"
         alt="Python Wheel"
       />
     </a>
-    <a href="https://pypi.python.org/pypi/snapchat-dl">
+    <a href="https://pypi.python.org/pypi/snapchat-dlp">
       <img
-        src="https://img.shields.io/github/workflow/status/skyme5/snapchat-dl/build?cacheSeconds=360"
+        src="https://img.shields.io/github/workflow/status/skyme5/snapchat-dlp/build?cacheSeconds=360"
         alt="CI"
       />
     </a>
-    <a href="https://codecov.io/gh/skyme5/snapchat-dl">
+    <a href="https://codecov.io/gh/skyme5/snapchat-dlp">
       <img
-        src="https://img.shields.io/codecov/c/github/skyme5/snapchat-dl?cacheSeconds=360"
+        src="https://img.shields.io/codecov/c/github/skyme5/snapchat-dlp?cacheSeconds=360"
         alt="Code Coverage"
       />
     </a>
-    <a href="https://codecov.io/gh/skyme5/snapchat-dl">
+    <a href="https://codecov.io/gh/skyme5/snapchat-dlp">
       <img
-        src="https://img.shields.io/pypi/pyversions/snapchat-dl"
+        src="https://img.shields.io/pypi/pyversions/snapchat-dlp"
         alt="Python Versions"
       />
     </a>
@@ -38,9 +38,9 @@
         alt="The Uncompromising Code Formatter"
       />
     </a>
-    <a href="https://pepy.tech/project/snapchat-dl">
+    <a href="https://pepy.tech/project/snapchat-dlp">
       <img
-        src="https://static.pepy.tech/badge/snapchat-dl"
+        src="https://static.pepy.tech/badge/snapchat-dlp"
         alt="Monthly Downloads"
       />
     </a>
@@ -58,13 +58,13 @@
 Install using pip,
 
 ```bash
-pip install snapchat-dl
+pip install snapchat-dlp
 ```
 
 Install from GitHub,
 
 ```bash
-pip install git+git://github.com/skyme5/snapchat-dl
+pip install git+git://github.com/Walmann/snapchat-dlp
 ```
 
 Unix users might want to add `--user` flag to install without requiring `sudo`.
@@ -73,7 +73,7 @@ Unix users might want to add `--user` flag to install without requiring `sudo`.
 
 ```text
 
-usage: snapchat-dl [-h] [-c | -u] [-i BATCH_FILENAME] [-P DIRECTORY_PREFIX]
+usage: snapchat-dlp [-h] [-c | -u] [-i BATCH_FILENAME] [-P DIRECTORY_PREFIX]
                    [-s] [-d] [-l MAX_NUM_STORY] [-j MAX_WORKERS] [-t INTERVAL]
                    [--sleep-interval INTERVAL] [-q]
                    [username [username ...]]

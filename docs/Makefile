@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = snapchat_dl
+SPHINXPROJ    = snapchat_dlp
 SOURCEDIR     = .
 BUILDDIR      = _build
 

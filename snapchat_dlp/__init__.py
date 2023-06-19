@@ -3,6 +3,6 @@
 __author__ = """Aakash Gajjar"""
 __email__ = "skyqutip@gmail.com"
 
-from snapchat_dl.snapchat_dl import SnapchatDL
+from snapchat_dlp.snapchat_dlp import SnapchatDL
 
 __all__ = ["SnapchatDL"]

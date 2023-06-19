@@ -1,17 +1,17 @@
-"""Commandline setup for snapchat_dl."""
+"""Commandline setup for snapchat_dlp."""
 import sys
 import time
 
 import pyperclip
 from loguru import logger
 
-from snapchat_dl.cli import parse_arguments
-from snapchat_dl.snapchat_dl import SnapchatDL
-from snapchat_dl.utils import NoStoriesFound
-from snapchat_dl.utils import search_usernames
-from snapchat_dl.utils import use_batch_file
-from snapchat_dl.utils import use_prefix_dir
-from snapchat_dl.utils import UserNotFoundError
+from snapchat_dlp.cli import parse_arguments
+from snapchat_dlp.snapchat_dlp import SnapchatDL
+from snapchat_dlp.utils import NoStoriesFound
+from snapchat_dlp.utils import search_usernames
+from snapchat_dlp.utils import use_batch_file
+from snapchat_dlp.utils import use_prefix_dir
+from snapchat_dlp.utils import UserNotFoundError
 
 
 def main():

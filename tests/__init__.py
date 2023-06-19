@@ -1,1 +1,1 @@
-"""Unit test package for snapchat_dl."""
+"""Unit test package for snapchat_dlp."""

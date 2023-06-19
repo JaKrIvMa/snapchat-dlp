@@ -1,4 +1,4 @@
-"""Utility functions for snapchat_dl."""
+"""Utility functions for snapchat_dlp."""
 import json
 import os
 import re

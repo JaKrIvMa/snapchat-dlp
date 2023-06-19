@@ -1,4 +1,4 @@
-"""File Downlaoder for snapchat_dl."""
+"""File Downlaoder for snapchat_dlp."""
 import os
 import time
 

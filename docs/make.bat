@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=snapchat_dl
+set SPHINXPROJ=snapchat_dlp
 
 if "%1" == "" goto help
 

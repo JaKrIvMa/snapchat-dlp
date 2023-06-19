@@ -7,7 +7,7 @@ Submodules
 snapchat\_dl.cli module
 -----------------------
 
-.. automodule:: snapchat_dl.cli
+.. automodule:: snapchat_dlp.cli
     :members:
     :undoc-members:
     :show-inheritance:
@@ -15,7 +15,7 @@ snapchat\_dl.cli module
 snapchat\_dl.snapchat\_dl module
 --------------------------------
 
-.. automodule:: snapchat_dl.snapchat_dl
+.. automodule:: snapchat_dlp.snapchat_dlp
     :members:
     :undoc-members:
     :show-inheritance:
@@ -24,7 +24,7 @@ snapchat\_dl.snapchat\_dl module
 Module contents
 ---------------
 
-.. automodule:: snapchat_dl
+.. automodule:: snapchat_dlp
     :members:
     :undoc-members:
     :show-inheritance:

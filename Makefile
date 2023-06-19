@@ -49,7 +49,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .test-data
 
 lint: ## check style with flake8
-	black snapchat_dl tests
+	black snapchat_dlp tests
 
 test: clean-test ## run tests quickly with the default Python
 	pytest tests --cache-clear
@@ -64,12 +64,12 @@ coverage: clean-test ## check code coverage quickly with the default Python
 	$(BROWSER) htmlcov/index.html
 
 docs-usage:
-	python.exe snapchat_dl/cli.py --help > USAGE.rst
+	python.exe snapchat_dlp/cli.py --help > USAGE.rst
 
 docs: docs-usage## generate Sphinx HTML documentation, including API docs
-	rm -f docs/snapchat_dl.rst
+	rm -f docs/snapchat_dlp.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ snapchat_dl
+	sphinx-apidoc -o docs/ snapchat_dlp
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

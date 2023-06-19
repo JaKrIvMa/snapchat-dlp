@@ -1,12 +1,12 @@
-"""Console script for snapchat_dl."""
+"""Console script for snapchat_dlp."""
 import argparse
 import os
 import sys
 
 
 def parse_arguments():
-    """Console script for snapchat_dl."""
-    parser = argparse.ArgumentParser(prog="snapchat-dl")
+    """Console script for snapchat_dlp."""
+    parser = argparse.ArgumentParser(prog="snapchat-dlp")
 
     parser.add_argument(
         "username",

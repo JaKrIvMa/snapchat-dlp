@@ -7,13 +7,13 @@ import re
 import requests
 from loguru import logger
 
-from snapchat_dl.downloader import download_url
-from snapchat_dl.utils import APIResponseError
-from snapchat_dl.utils import dump_response
-from snapchat_dl.utils import MEDIA_TYPE
-from snapchat_dl.utils import NoStoriesFound
-from snapchat_dl.utils import strf_time
-from snapchat_dl.utils import UserNotFoundError
+from snapchat_dlp.downloader import download_url
+from snapchat_dlp.utils import APIResponseError
+from snapchat_dlp.utils import dump_response
+from snapchat_dlp.utils import MEDIA_TYPE
+from snapchat_dlp.utils import NoStoriesFound
+from snapchat_dlp.utils import strf_time
+from snapchat_dlp.utils import UserNotFoundError
 
 
 class SnapchatDL:
