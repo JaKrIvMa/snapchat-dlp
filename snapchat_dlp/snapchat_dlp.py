@@ -80,6 +80,9 @@ class SnapchatDL:
             return stories, user_info
         except (IndexError, KeyError, ValueError):
             raise APIResponseError
+        except UserNotFoundError as e:
+            print(f"User {username} not found. Check the spelling, or that it is a public profile.")
+            print(e)
 
     def download(self, username):
         """Download Snapchat Story for `username`.
@@ -96,8 +99,8 @@ class SnapchatDL:
         if len(stories) == 0:
             if self.quiet is False:
                 logger.info("\033[91m{}\033[0m has no stories".format(username))
-
-            raise NoStoriesFound
+            print("Found no stories. Could be a typo in the username, or the user does not have any published stories right now.")
+            # raise NoStoriesFound
 
         if self.limit_story > -1:
             stories = stories[0 : self.limit_story]
