@@ -3,10 +3,12 @@
 from setuptools import find_packages
 from setuptools import setup
 
+from snapchat_dlp.__init__ import __version__
 
-version = {}
-with open("snapchat_dlp/version.py") as fp:
-    exec(fp.read(), version)
+# version = {}
+# # with open("snapchat_dlp/version.py") as fp:
+# with open("snapchat_dlp/__init__.py") as fp:
+#     exec(fp.read(), version)
 
 with open("README.md") as readme_file:
     readme = readme_file.read()
@@ -20,7 +22,8 @@ test_requirements = ["pytest"].extend(requirements)
 
 setup(
     name="snapchat-dlp",
-    version=version["__version__"],
+    version=__version__,
+    # version=version["__version__"],
     description="An update to snapchat-dlp, a Snapchat Public Stories Downloader.",
     long_description=readme,
     long_description_content_type="text/markdown",
