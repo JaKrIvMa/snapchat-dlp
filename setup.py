@@ -3,7 +3,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-from snapchat_dlp.__init__ import __version__
+# from snapchat_dlp.__init__ import __version__
 
 version = {}
 with open("snapchat_dlp/version.py") as fp:
