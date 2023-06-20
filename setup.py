@@ -21,8 +21,7 @@ test_requirements = ["pytest"].extend(requirements)
 
 setup(
     name="snapchat-dlp",
-    version=__version__,
-    # version=version["__version__"],
+    version=version["__version__"],
     description="An update to snapchat-dlp, a Snapchat Public Stories Downloader.",
     long_description=readme,
     long_description_content_type="text/markdown",
