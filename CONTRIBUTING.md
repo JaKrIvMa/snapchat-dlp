@@ -119,6 +119,7 @@ Then run::
 
 ```bash
     $ bump2version patch # possible: major / minor / patch
+    $ python setup.py sdist
     $ git push
     $ git push --tags
 ```
