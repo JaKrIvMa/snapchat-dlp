@@ -5,10 +5,9 @@ from setuptools import setup
 
 from snapchat_dlp.__init__ import __version__
 
-# version = {}
-# # with open("snapchat_dlp/version.py") as fp:
-# with open("snapchat_dlp/__init__.py") as fp:
-#     exec(fp.read(), version)
+version = {}
+with open("snapchat_dlp/version.py") as fp:
+    exec(fp.read(), version)
 
 with open("README.md") as readme_file:
     readme = readme_file.read()
