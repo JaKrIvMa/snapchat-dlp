@@ -82,7 +82,8 @@ class SnapchatDL:
             raise APIResponseError
         except UserNotFoundError as e:
             print(f"User {username} not found. Check the spelling, or that it is a public profile.")
-            print(e)
+            # print(e)
+            pass
 
     def download(self, username):
         """Download Snapchat Story for `username`.
