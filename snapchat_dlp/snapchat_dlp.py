@@ -3,6 +3,7 @@ import concurrent.futures
 import json
 import os
 import re
+import time
 
 import requests
 from loguru import logger
@@ -56,6 +57,9 @@ class SnapchatDL:
         Returns:
             (dict, dict): user_info, stories
         """
+        retries = 3
+        timeout = 15
+
         response = self._api_response(username)
         response_json_raw = re.findall(self.regexp_web_json, response)
 
@@ -81,9 +85,16 @@ class SnapchatDL:
         except (IndexError, KeyError, ValueError):
             raise APIResponseError
         except UserNotFoundError as e:
-            print(f"User {username} not found. Check the spelling, or that it is a public profile.")
+            if retries >= 0:
+                print(
+                    f"User {username} not found. Check the spelling, or that it is a public profile. Retry in {timeout} seconds. Retries left: {retries}"
+                )
+                time.sleep(15)
+                self._web_fetch_story(self, username)
+            else:
+                pass
             # print(e)
-            pass
+            
 
     def download(self, username):
         """Download Snapchat Story for `username`.
@@ -95,12 +106,19 @@ class SnapchatDL:
             [bool]: story downloader
         """
         story_download_count = 0
-        stories, snap_user = self._web_fetch_story(username)
-
+        try:
+            stories, snap_user = self._web_fetch_story(username)
+        except TypeError as e:
+            print(
+                f"Error with above command. \n| Args: username: {str(username)} \n| self: {str(self)} \n| Error message: {str(e)}"
+            )
+            pass
         if len(stories) == 0:
             if self.quiet is False:
                 logger.info("\033[91m{}\033[0m has no stories".format(username))
-            print("Found no stories. Could be a typo in the username, or the user does not have any published stories right now.")
+            print(
+                "Found no stories. Possible reasons:\n - Typo in the username\n - User currently does not have any published stories\n - The profile is not a public profile"
+            )
             # raise NoStoriesFound
 
         if self.limit_story > -1:
