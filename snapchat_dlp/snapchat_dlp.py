@@ -105,6 +105,8 @@ class SnapchatDL:
         Returns:
             [bool]: story downloader
         """
+        stories = 0
+        
         story_download_count = 0
         try:
             stories, snap_user = self._web_fetch_story(username)
