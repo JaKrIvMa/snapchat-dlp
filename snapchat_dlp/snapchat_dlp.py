@@ -85,16 +85,10 @@ class SnapchatDL:
         except (IndexError, KeyError, ValueError):
             raise APIResponseError
         except UserNotFoundError as e:
-            if retries >= 0:
                 print(
-                    f"User {username} not found. Check the spelling, or that it is a public profile. Retry in {timeout} seconds. Retries left: {retries}"
+                    f"User {username} not found. Check the spelling, or that it is a public profile."
                 )
-                time.sleep(15)
-                self._web_fetch_story(self, username)
-            else:
-                pass
             # print(e)
-            
 
     def download(self, username):
         """Download Snapchat Story for `username`.
@@ -105,62 +99,67 @@ class SnapchatDL:
         Returns:
             [bool]: story downloader
         """
-        stories = 0
-        
+        stories = None
+        snap_user = None
+
+        skip_user = False
         story_download_count = 0
         try:
             stories, snap_user = self._web_fetch_story(username)
         except TypeError as e:
             print(
-                f"Error with above command. \n| Args: username: {str(username)} \n| self: {str(self)} \n| Error message: {str(e)}"
+                f"Error with above command. \n| Args: username: {str(username)} \n| stories: {stories} \n| snap_user: {snap_user} \n| self: {str(self)} \n| Error message: {str(e)}"
             )
+            skip_user = True
             pass
-        if len(stories) == 0:
+        if len(stories) == 0 or stories is None:
             if self.quiet is False:
                 logger.info("\033[91m{}\033[0m has no stories".format(username))
             print(
                 "Found no stories. Possible reasons:\n - Typo in the username\n - User currently does not have any published stories\n - The profile is not a public profile"
             )
+            skip_user = True
+            pass
             # raise NoStoriesFound
 
         if self.limit_story > -1:
             stories = stories[0 : self.limit_story]
 
         logger.info("[+] {} has {} stories".format(username, len(stories)))
+        if not skip_user:
+            executor = concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers)
+            try:
+                for media in stories:
+                    snap_id = media["snapId"]["value"]
+                    media_url = media["snapUrls"]["mediaUrl"]
+                    media_type = media["snapMediaType"]
+                    timestamp = int(media["timestampInSec"]["value"])
+                    date_str = strf_time(timestamp, "%Y-%m-%d")
 
-        executor = concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers)
-        try:
-            for media in stories:
-                snap_id = media["snapId"]["value"]
-                media_url = media["snapUrls"]["mediaUrl"]
-                media_type = media["snapMediaType"]
-                timestamp = int(media["timestampInSec"]["value"])
-                date_str = strf_time(timestamp, "%Y-%m-%d")
+                    dir_name = os.path.join(self.directory_prefix, username, date_str)
 
-                dir_name = os.path.join(self.directory_prefix, username, date_str)
+                    filename = strf_time(timestamp, "%Y-%m-%d_%H-%M-%S {} {}.{}").format(
+                        snap_id, username, MEDIA_TYPE[media_type]
+                    )
 
-                filename = strf_time(timestamp, "%Y-%m-%d_%H-%M-%S {} {}.{}").format(
-                    snap_id, username, MEDIA_TYPE[media_type]
-                )
+                    if self.dump_json:
+                        filename_json = os.path.join(dir_name, filename + ".json")
+                        media_json = dict(media)
+                        media_json["snapUser"] = snap_user
+                        dump_response(media_json, filename_json)
 
-                if self.dump_json:
-                    filename_json = os.path.join(dir_name, filename + ".json")
-                    media_json = dict(media)
-                    media_json["snapUser"] = snap_user
-                    dump_response(media_json, filename_json)
+                    media_output = os.path.join(dir_name, filename)
 
-                media_output = os.path.join(dir_name, filename)
+                    # # Check if file exists
+                    if not os.path.isfile(media_output):
+                        story_download_count += 1
 
-                # # Check if file exists
-                if not os.path.isfile(media_output):
-                    story_download_count += 1
+                    executor.submit(
+                        download_url, media_url, media_output, self.sleep_interval
+                    )
 
-                executor.submit(
-                    download_url, media_url, media_output, self.sleep_interval
-                )
-
-        except KeyboardInterrupt:
-            executor.shutdown(wait=False)
+            except KeyboardInterrupt:
+                executor.shutdown(wait=False)
         executor.shutdown(wait=True)
         logger.info(
             "[✔] {}'s stories downloaded, downloaded {} this session, {} already existed".format(
