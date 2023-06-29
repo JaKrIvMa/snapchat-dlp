@@ -5,5 +5,5 @@ __email__ = "skyqutip@gmail.com"
 
 from snapchat_dlp.snapchat_dlp import SnapchatDL
 
-__version__ = "1.5.12"
+__version__ = "1.5.13"
 __all__ = ["SnapchatDL"]
