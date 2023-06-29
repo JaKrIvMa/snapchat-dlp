@@ -160,7 +160,7 @@ class SnapchatDL:
 
             except KeyboardInterrupt:
                 executor.shutdown(wait=False)
-        executor.shutdown(wait=True)
+            executor.shutdown(wait=True)
         logger.info(
             "[✔] {}'s stories downloaded, downloaded {} this session, {} already existed".format(
                 username, story_download_count, len(stories) - story_download_count
